@@ -1,0 +1,140 @@
+{
+"topic":"Data-binding",
+"questions":[
+{
+"question":"what is data binding?",
+"description":"basic question",
+"upvotes":21,
+"timestamp":123456,
+"downvote":2,
+"answers":[
+	  {
+	   "answer":"xyz",
+      "accepted":true,
+	   "comments":[
+		     {
+			"comment":"the answer is quite elaborate",
+			"timestamp":675432,
+			"likes":12,
+			"replies":[
+				 {
+				   "reply":"satisfied",
+				   "likes":31,
+				   "timestamp":234562,
+            "user":{
+                  "firstname":"Shilpa",
+                  "emailaddress":"shilparani.edu@gmail.com",
+                  "imageurl":"https://www.w3schools.com/angular/pic_angular.jpg"
+                   }
+				 }
+				],
+            "user":{
+                  " firstname":"sajal",
+                   "emailaddress":"sajal@gmail.com",
+                  "imageurl":"https://www.w3schools.com/angular/pic_angular.jpg"
+                  }
+		     }
+		    ],
+	   "upvotes":89,
+	   "views":100,
+	   "timestamp":234567,
+     "user":{
+                "firstname":"Reshma",
+                "emailaddress":"reshma@gmail.com",
+                "imageurl":"https://www.w3schools.com/angular/pic_angular.jpg"
+                }
+
+			}
+			],
+
+"comments":[
+	  {
+	   "comment":"basic question asked",
+	   "timestamp":654321,
+	   "likes":87,
+	   "replies":[
+		    {
+		    "reply":"yes",
+		    "likes":21,
+		    "timestamp":432154
+		    }
+		   ]
+	  }
+	 
+	],
+"user":{
+     "firstname":"shubham",
+     "emailaddress":"shubham@hmail.com",
+     "imageurl":"https://www.w3schools.com/angular/pic_angular.jpg"
+     }
+},
+
+{
+"question":"Is dere some other alternative to it?",
+"description":"application",
+"upvotes":19,
+"timestamp":163756,
+"downvote":6,
+"answers":[
+	  {
+	   "answer":"xyz",
+      "accepted":true,
+	   "comments":[
+		     {
+			"comment":"the answer is quite elaborate",
+			"timestamp":675402,
+			"likes":60,
+			"replies":[
+				 {
+				   "reply":"satisfied",
+				   "likes":63,
+				   "timestamp":234962,
+            "user":{
+                  "firstname":"Shilpa",
+                  "emailaddress":"shilparani.edu@gmail.com",
+                  "imageurl":"https://www.w3schools.com/angular/pic_angular.jpg"
+                   }
+				 }
+				],
+            "user":{
+                  " firstname":"sajal",
+                   "emailaddress":"sajal@gmail.com",
+                  "imageurl":"https://www.w3schools.com/angular/pic_angular.jpg"
+                  }
+		     }
+		    ],
+	   "upvotes":90,
+	   "views":192,
+	   "timestamp":234067,
+     "user":{
+                "firstname":"Reshma",
+                "emailaddress":"reshma@gmail.com",
+                "imageurl":"https://www.w3schools.com/angular/pic_angular.jpg"
+                }
+
+			}
+			],
+
+"comments":[
+	  {
+	   "comment":"basic question asked",
+	   "timestamp":654721,
+	   "likes":23,
+	   "replies":[
+		    {
+		    "reply":"yes",
+		    "likes":27,
+		    "timestamp":438154
+		    }
+		   ]
+	  }
+	 
+	],
+"user":{
+     "firstname":"shubham",
+     "emailaddress":"shubham@hmail.com",
+     "imageurl":"https://www.w3schools.com/angular/pic_angular.jpg"
+     }
+}
+]
+}

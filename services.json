@@ -1,0 +1,453 @@
+{
+  "topic": "services",
+  "questions": [
+    {
+      "question": "what is injectable in angular service?",
+      "description": "services",
+      "upvotes": 23,
+      "timestamp": 762388,
+      "downvote": 34,
+      "answers": [
+        {
+          "answer": "the @injectable() decorator marks it as a service that can be injected, but angular can't actually inject it anywhere until you configure an Angulardependency injector with a provider of that service. The injector is responsible for creating service instances and injecting them into classes like HeroListcomponent ",
+          "accepted": "true",
+          "comments": [
+            {
+              "comment": "good one",
+              "timestamp": 875762,
+              "likes": 33,
+              "replies": [
+                {
+                  "reply": "right",
+                  "likes": 34,
+                  "timestamp": 976854,
+                  "user": {
+                    "firstname": "uday",
+                    "emailaddress": "udaystupid@gmail.com",
+                    "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+                  }
+                }
+              ],
+              "user": {
+                "firstname": "amrit",
+                "emailaddress": "amrit@gmail.com",
+                "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+              }
+            }
+          ],
+          "upvotes": 94,
+          "views": 36,
+          "timestamp": 2784345,
+          "user": {
+            "firstname": "santhosh",
+            "emailaddress": "santhosh@gmail.com",
+            "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+          }
+        }
+      ],
+      "comments": [
+        {
+          "comment": "bad",
+          "timestamp": 49859,
+          "likes": 34,
+          "replies": [
+            {
+              "reply": "bad",
+              "likes": 25,
+              "timestamp": 234567
+            }
+          ]
+        }
+      ],
+      "user": {
+        "firstname": "pawan",
+        "emailaddress": "pawan@gmail.com",
+        "imageurl": "https://www.w3schools.com/angular/pic_angular.jpg"
+      }
+    },
+    {
+      "question": "are angular services singletons?",
+      "description": "service angular",
+      "upvotes": 43,
+      "timestamp": 872734,
+      "downvote": 86,
+      "answers": [
+        {
+          "answer": "the second argument to service() is a constructor function. When we ask for theservice as a dependency, AngularJS creates an object from this constructor function and injects it. A service is a singleton. AngularJS instantiates the serviceobject only once and all other components share the same instance.",
+          "accepted": "true",
+          "comments": [
+            {
+              "comment": "better",
+              "timestamp": 23456347,
+              "likes": 34,
+              "replies": [
+                {
+                  "reply": "elaborate more",
+                  "likes": 23,
+                  "timestamp": 789065,
+                  "user": {
+                    "firstname": "mounika",
+                    "emailaddress": "mounika@gmail.com",
+                    "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+                  }
+                }
+              ],
+              "user": {
+                "firstname": "arun",
+                "emailaddress": "arun@gmail.com",
+                "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+              }
+            }
+          ],
+          "upvotes": 33,
+          "views": 103,
+          "timestamp": 6789023,
+          "user": {
+            "firstname": "vanaja",
+            "emailaddress": "vanaja@gmail.com",
+            "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+          }
+        }
+      ],
+      "comments": [
+        {
+          "comment": "helpful",
+          "timestamp": 456789,
+          "likes": 17,
+          "replies": [
+            {
+              "reply": 82,
+              "likes": 25,
+              "timestamp": 234567
+            }
+          ]
+        }
+      ],
+      "user": {
+        "firstname": "radhika",
+        "emailaddress": "radhika@gmail.com",
+        "imageurl": "https://www.w3schools.com/angular/pic_angular.jpg"
+      }
+    },
+    {
+      "question": "why use services?",
+      "description": "angular services",
+      "upvotes": 11,
+      "timestamp": 6789025,
+      "downvote": 3,
+      "answers": [
+        {
+          "answer": "for many services, like the $location service, it seems like you could use objects that are already in the DOM, like the window.location object, and you could, but it would have some limitations, at least for your AngularJS application.\nAngularJS constantly supervises your application, and for it to handle changes and events properly, angularjs prefers that you use the $location service instead of the window.location object.",
+          "accepted": "true",
+          "comments": [
+            {
+              "comment": "answer correct",
+              "timestamp": 234567,
+              "likes": 52,
+              "replies": [
+                {
+                  "reply": "elaborate more",
+                  "likes": 2,
+                  "timestamp": 789065,
+                  "user": {
+                    "firstname": "zakir",
+                    "emailaddress": "zakir@gmail.com",
+                    "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+                  }
+                }
+              ],
+              "user": {
+                "firstname": "sushant",
+                "emailaddress": "sushant@gmail.com",
+                "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+              }
+            }
+          ],
+          "upvotes": 22,
+          "views": 42,
+          "timestamp": 6789023,
+          "user": {
+            "firstname": "pardhu",
+            "emailaddress": "pardhu@gmail.com",
+            "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+          }
+        }
+      ],
+      "comments": [
+        {
+          "comment": "helpful",
+          "timestamp": 4526789,
+          "likes": 72,
+          "replies": [
+            {
+              "reply": 7,
+              "likes": 10,
+              "timestamp": 234567
+            }
+          ]
+        }
+      ],
+      "user": {
+        "firstname": "sweety",
+        "emailaddress": "sweety@gmail.com",
+        "imageurl": "https://www.w3schools.com/angular/pic_angular.jpg"
+      }
+    },
+    {
+      "question": "what is http service?",
+      "description": "services",
+      "upvotes": 26,
+      "timestamp": 6782905,
+      "downvote": 9,
+      "answers": [
+        {
+          "answer": "the $http service is one of the most common used services in angularjs applications. the service makes a request to the server, and lets your application handle the response.",
+          "accepted": "true",
+          "comments": [
+            {
+              "comment": "elaborate more",
+              "timestamp": 234567,
+              "likes": 34,
+              "replies": [
+                {
+                  "reply": "good",
+                  "likes": 22,
+                  "timestamp": 7829065,
+                  "user": {
+                    "firstname": "vidya",
+                    "emailaddress": "vidya@gmail.com",
+                    "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+                  }
+                }
+              ],
+              "user": {
+                "firstname": "hima",
+                "emailaddress": "hima@gmail.com",
+                "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+              }
+            }
+          ],
+          "upvotes": 83,
+          "views": 22,
+          "timestamp": 6789023,
+          "user": {
+            "firstname": "tom",
+            "emailaddress": "tom@gmail.com",
+            "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+          }
+        }
+      ],
+      "comments": [
+        {
+          "comment": "not helpful",
+          "timestamp": 456789,
+          "likes": 23,
+          "replies": [
+            {
+              "reply": 12,
+              "likes": 44,
+              "timestamp": 234567
+            }
+          ]
+        }
+      ],
+      "user": {
+        "firstname": "ankit",
+        "emailaddress": "ankit@gmail.com",
+        "imageurl": "https://www.w3schools.com/angular/pic_angular.jpg"
+      }
+    },
+    {
+      "question": "how to use a custom service inside a filter?",
+      "description": "impure pipe",
+      "upvotes": 34,
+      "timestamp": 678905,
+      "downvote": 3,
+      "answers": [
+        {
+          "answer": "once you have created a service, and connected it to your application, you can use the service in any controller, directive, filter, or even inside other services.\nTo use the service inside a filter, add it as a dependency when defining the filter:",
+          "accepted": "true",
+          "comments": [
+            {
+              "comment": "answer not good",
+              "timestamp": 234567,
+              "likes": 23,
+              "replies": [
+                {
+                  "reply": "elaborate more",
+                  "likes": 56,
+                  "timestamp": 789065,
+                  "user": {
+                    "firstname": "martin",
+                    "emailaddress": "martin@gmail.com",
+                    "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+                  }
+                }
+              ],
+              "user": {
+                "firstname": "pulkit",
+                "emailaddress": "pulkit@gmail.com",
+                "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+              }
+            }
+          ],
+          "upvotes": 34,
+          "views": 76,
+          "timestamp": 6789023,
+          "user": {
+            "firstname": "battu",
+            "emailaddress": "battu@gmail.com",
+            "imageurl": "https://i.ebayimg.com/images/g/vlUAAOxyx0JTf9Cg/s-l300.jpg"
+          }
+        }
+      ],
+      "comments": [
+        {
+          "comment": "not understood",
+          "timestamp": 4567839,
+          "likes": 23,
+          "replies": [
+            {
+              "reply": 28,
+              "likes": 37,
+              "timestamp": 234567
+            }
+          ]
+        }
+      ],
+      "user": {
+        "firstname": "kittu",
+        "emailaddress": "kittu@gmail.com",
+        "imageurl": "https://www.w3schools.com/angular/pic_angular.jpg"
+      }
+    },
+    {
+      "question": "why service is used?",
+      "description": "service",
+      "upvotes": 192,
+      "timestamp": 953743,
+      "downvote": 34,
+      "answers": [
+        {
+          "answer": "The separation of concerns is the main reason why Angular services came into existence. An Angular service is a stateless object and provides some very useful functions. These functions can be invoked from any component of Angular, like Controllers, Directives, etc. This helps in dividing the web application into small, different logical units which can be reused.\n",
+          "accepted": "true",
+          "comments": [
+            {
+              "comment": "good answer",
+              "timestamp": 539622,
+              "likes": 24,
+              "replies": [
+                {
+                  "reply": "elaborate",
+                  "likes": 23,
+                  "timestamp": 789065,
+                  "user": {
+                    "firstname": "abhimanyu",
+                    "emailaddress": "abhimanyu@gmail.com",
+                    "imageurl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/9b7e9421-72d6-4f22-9a66-3ab381efbb99/d53xf9q-275ea0d7-f50a-4d22-99c4-271b255798e2.jpg"
+                  }
+                }
+              ],
+              "user": {
+                "firstname": "kirti",
+                "emailaddress": "kirti@gmail.com",
+                "imageurl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/9b7e9421-72d6-4f22-9a66-3ab381efbb99/d53xf9q-275ea0d7-f50a-4d22-99c4-271b255798e2.jpg"
+              }
+            }
+          ],
+          "upvotes": 23,
+          "views": 32,
+          "timestamp": 8791346,
+          "user": {
+            "firstname": "mukesh",
+            "emailaddress": "mukesh@gmail.com",
+            "imageurl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/9b7e9421-72d6-4f22-9a66-3ab381efbb99/d53xf9q-275ea0d7-f50a-4d22-99c4-271b255798e2.jpg"
+          }
+        }
+      ],
+      "comments": [
+        {
+          "comment": " not very helpful",
+          "timestamp": 65195918,
+          "likes": 232,
+          "replies": [
+            {
+              "reply": 44,
+              "likes": 66,
+              "timestamp": 5466766
+            }
+          ]
+        }
+      ],
+      "user": {
+        "firstname": "sruti",
+        "emailaddress": "sruti@gmail.com",
+        "imageurl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/9b7e9421-72d6-4f22-9a66-3ab381efbb99/d53xf9q-275ea0d7-f50a-4d22-99c4-271b255798e2.jpg"
+      }
+    },
+    {
+      "question": "what are inbuilt services in angular?",
+      "description": "angular services",
+      "upvotes": 63,
+      "timestamp": 95615221,
+      "downvote": 23,
+      "answers": [
+        {
+          "answer": "angularjs provides many inbuilt services. For example, $http, $route, $window, $location, etc. Each service is responsible for a specific task such as the $http is used to make ajax call to get the server data, the $route is used to define the routing information, and so on. The inbuilt services are always prefixed with $ symbol.",
+          "accepted": "true",
+          "comments": [
+            {
+              "comment": "thanks!",
+              "timestamp": 3561497,
+              "likes": 34,
+              "replies": [
+                {
+                  "reply": "elaborate more",
+                  "likes": 23,
+                  "timestamp": 7237763,
+                  "user": {
+                    "firstname": "naneeth",
+                    "emailaddress": "naneeth@gmail.com",
+                    "imageurl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/9b7e9421-72d6-4f22-9a66-3ab381efbb99/d53xf9q-275ea0d7-f50a-4d22-99c4-271b255798e2.jpg"
+                  }
+                }
+              ],
+              "user": {
+                "firstname": "siri",
+                "emailaddress": "siri@gmail.com",
+                "imageurl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/9b7e9421-72d6-4f22-9a66-3ab381efbb99/d53xf9q-275ea0d7-f50a-4d22-99c4-271b255798e2.jpg"
+              }
+            }
+          ],
+          "upvotes": 23,
+          "views": 443,
+          "timestamp": 326532,
+          "user": {
+            "firstname": "mahika",
+            "emailaddress": "mahika@gmail.com",
+            "imageurl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/9b7e9421-72d6-4f22-9a66-3ab381efbb99/d53xf9q-275ea0d7-f50a-4d22-99c4-271b255798e2.jpg"
+          }
+        }
+      ],
+      "comments": [
+        {
+          "comment": "not helpful",
+          "timestamp": 73976523,
+          "likes": 22,
+          "replies": [
+            {
+              "reply": 97,
+              "likes": 25,
+              "timestamp": 5466766
+            }
+          ]
+        }
+      ],
+      "user": {
+        "firstname": "kamath",
+        "emailaddress": "kamath@gmail.com",
+        "imageurl": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/9b7e9421-72d6-4f22-9a66-3ab381efbb99/d53xf9q-275ea0d7-f50a-4d22-99c4-271b255798e2.jpg"
+      }
+    }
+  ]
+}
