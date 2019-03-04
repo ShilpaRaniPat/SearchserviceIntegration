@@ -1,5 +1,7 @@
 package com.stackroute.model;
 
+import com.stackroute.model.Replies;
+import com.stackroute.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +15,7 @@ import java.util.List;
 public class Comment {
     private String comment;
     private long timestamp;
-    private long likes;
-    User user;
-    List<Replies> replies;
+    private int likes;
+    private User user;
+    private List<Replies> replies;
 }

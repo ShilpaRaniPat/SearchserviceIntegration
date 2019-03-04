@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Replies {
     private String reply;
-    private long likes;
+    private int likes;
     private long timestamp;
-    User user;
+    private User user;
 }
 

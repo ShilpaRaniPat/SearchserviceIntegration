@@ -1,22 +1,21 @@
 package com.stackroute.service;
 
 import com.stackroute.Exceptions.ConceptNotFoundException;
-import com.stackroute.domain.Question;
-import com.stackroute.domain.Topic;
+import com.stackroute.domain.*;
+import com.stackroute.model.Comment;
 import com.stackroute.model.QuestionDTO;
 import com.stackroute.repository.SearchRepository;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
-
 @Service
-
+@Slf4j
 public class SearchServiceImpl implements SearchService {
     private SearchRepository searchRepository;
 
@@ -27,126 +26,204 @@ public class SearchServiceImpl implements SearchService {
 
     //Overrided method for saving searched questions//
     @Override
-    public void saveTopic(Topic topic) { searchRepository.save(topic); }
+    public void saveTopic(Topic topic) {
+        searchRepository.save(topic);
+    }
 
     //Overrided method for getAllTopics//
     @Override
-    public List<Topic> getAllTopics()  {
+    public List<Topic> getAllTopics() {
         return searchRepository.findAll();
     }
 
     //Overrided method for getQuestionsByTopic//
     @Override
-    public List<Topic> getQuestionsByTopic(String topic)  {
+    public List<Topic> getQuestionsByTopic(String topic) {
         return searchRepository.findByTopic(topic);
     }
 
     //Overrided method for getQuestion//
 
     @Override
-    public List<Topic> getQuestion(String topic) throws ConceptNotFoundException{
+    public List<Topic> getQuestion(String topic) throws ConceptNotFoundException {
         System.out.println(searchRepository.findByQuestions(topic));
-        if (!searchRepository.existsById(topic)){
+        if (!searchRepository.existsById(topic)) {
             throw new ConceptNotFoundException("Result not found");
         }
         return searchRepository.findByTopic(topic);
-
-    }
-    @Override
-    public Question Question(Question question) {
-        return searchRepository.findByTopic()
-
     }
 
-    /*
-    for getting question object based on topic and question
-     */
     @Override
-    public List<Question> questionOfTopic(String topic, String question) throws ConceptNotFoundException {
+    public List<com.stackroute.domain.Question> questionOfTopic(String topic, String question) throws ConceptNotFoundException {
 
-        if (!searchRepository.existsById(topic)){
+        if (!searchRepository.existsById(topic)) {
             throw new ConceptNotFoundException("Result not found");
         }
         Topic topics = searchRepository.findById(topic).get();
-        List<Question> questionLists = topics.getQuestions();
-        List<Question> questions = new ArrayList<Question>();
-        for (Question questionList: questionLists) {
-            if(questionList.getQuestion().contains(question.toString())){
+        List<com.stackroute.domain.Question> questionLists = topics.getQuestions();
+        List<com.stackroute.domain.Question> questions = new ArrayList<>();
+        for (com.stackroute.domain.Question questionList : questionLists) {
+            if (questionList.getQuestion().contains(question.toString())) {
                 questions.add(questionList);
             }
         }
 
         return questions;
     }
-//    @Override
-//    public QuestionDTO saveQuestionDTO(QuestionDTO questionDTO)throws  {
-//        if(searchRepository.existsById(questionDTO.getQuestion())){
-//
-//        }
-//        QuestionDTO questionDTO1= searchRepository.save(questionDTO);
-//
-//        return questionDTO1;
-//    }
 
-//    @Override
-//    public List<Question> questionOfPost(String question) {
-//        return null;
-//    }
 
     @Override
-    public List<Question> questionOfPost(QuestionDTO questionDTO) {
-
-        List<Question> ques=null;
-        questionDTO.getQuestion().toLowerCase();
-
-        List<String> topics=questionDTO.getTopics();
-
-
-        System.out.println("abccsdshbd");
-        for(String t:topics)
-        {
-//             System.out.println("zakkkkkkkkkkkkkkkkkkkkkkkk");
-            System.out.println(t.toLowerCase());
-
-//             System.out.println("udayyyyyyyyyyyyyyyyyyyyy");
-        }
-
-
-        String ques1=questionDTO.getQuestion();
-        System.out.println("abcbchvh"+ques1.toLowerCase());
-
-//        for(int i=0;i<questionDTO.getTopics().size();i++){
-//            System.out.println(questionDTO.getTopics());
-//            questionDTO.set(i,questionDTO.get(i).toLowerCase());
-//        }
-
-
-        List<String> topicList=questionDTO.getTopics();
-        for (String topicName:topicList
-        ) {
-            if( topicName.equals(searchRepository.findById(topicName))){
-                Topic topicDomain = searchRepository.findById(topicName).get();
-                List<Question> questionDomainList = topicDomain.getQuestions();
-//               List<Question> questionPost = new ArrayList<Question>();
-                for (Question questionSearchFromDomain:questionDomainList
-                ) {
-
-                    if(questionDTO.getQuestion().equals(questionSearchFromDomain)){
-
-                        topicDomain savedDomain = searchRepository.save();
+    public List<com.stackroute.domain.Question> questionOfPost(QuestionDTO questionDTO) {
 
 
 
+        List<String> topicList = questionDTO.getTopics();
+        topicList.replaceAll(String::toLowerCase);
+
+        questionDTO.getTopics().forEach(topic -> {
+            Question question = new Question();
+            question.setQuestion(questionDTO.getQuestion());
+            question.setDescription(questionDTO.getDescription());
+            question.setUpvotes(questionDTO.getUpvotes());
+            question.setTimestamp(questionDTO.getTimestamp());
+            question.setDownvote(questionDTO.getDownvotes());
+
+
+            List<Comment> commentList = questionDTO.getComment();
+            List<Comments> commentsList = new ArrayList<>();
+
+
+            for (Comment comment : commentList) {
+                List<Replies> replies = new ArrayList<>();
+                for (com.stackroute.model.Replies reply : comment.getReplies()) {
+                    User user = new User(reply.getUser().getEmailaddress(), reply.getUser().getFirstname(), reply.getUser().getImageurl());
+                    Replies replies1 = new Replies(reply.getReply(), reply.getLikes(), reply.getTimestamp(), user);
+                    replies.add(replies1);
+                }
+                User user = new User(questionDTO.getUser().getEmailaddress(), questionDTO.getUser().getFirstname(), questionDTO.getUser().getImageurl());
+
+                Comments comments = new Comments(comment.getComment(), comment.getTimestamp(), comment.getLikes(), replies, user);
+                commentsList.add(comments);
+            }
+
+            question.setComments(commentsList);
+
+            List<Answer> answerList = new ArrayList<>();
+            for (com.stackroute.model.Answer answer : questionDTO.getAnswer()) {
+                List<Comments> answerCommentsList = new ArrayList<>();
+                for (Comment comment : commentList) {
+                    List<Replies> replies = new ArrayList<>();
+                    for (com.stackroute.model.Replies reply : comment.getReplies()) {
+                        User user = new User(reply.getUser().getEmailaddress(), reply.getUser().getFirstname(), reply.getUser().getImageurl());
+                        Replies replies1 = new Replies(reply.getReply(), reply.getLikes(), reply.getTimestamp(), user);
+                        replies.add(replies1);
                     }
+
+
+                    User user = new User(questionDTO.getUser().getEmailaddress(), questionDTO.getUser().getFirstname(), questionDTO.getUser().getImageurl());
+
+
+                    Comments comments = new Comments(comment.getComment(), comment.getTimestamp(), comment.getLikes(), replies, user);
+                    answerCommentsList.add(comments);
+                }
+
+                User userAnswer = new User(answer.getUser().getEmailaddress(), answer.getUser().getFirstname(), answer.getUser().getImageurl());
+                Answer answerDomain = new Answer(answer.getAnswer(), answer.isAccepted(), answerCommentsList, answer.getUpvotes(), answer.getViews(), answer.getTimestamp(), userAnswer);
+                answerList.add(answerDomain);
+            }
+            question.setAnswers(answerList);
+            User user = new User(questionDTO.getUser().getEmailaddress(), questionDTO.getUser().getFirstname(), questionDTO.getUser().getImageurl());
+            question.setUser(user);
+
+
+            Topic topicDoc = searchRepository.findById(topic).orElse(new Topic());
+            topicDoc.getQuestions().forEach(questionFromDb -> {
+                if (questionFromDb.getQuestion().equalsIgnoreCase(question.getQuestion())) {
+                    System.out.println("print true here");
+                    questionFromDb.setDownvote(question.getDownvote());
+                    questionFromDb.setTimestamp(question.getTimestamp());
+                    questionFromDb.setComments(question.getComments());
+                    questionFromDb.setAnswers(question.getAnswers());
+                    questionFromDb.setUpvotes(question.getUpvotes());
+                    questionFromDb.setDescription(question.getDescription());
+                    questionFromDb.setQuestion(question.getQuestion());
+                    questionFromDb.setUser(question.getUser());
+                    System.out.println("daata before rabbit ");
+                    System.out.println("data from rabbit " + topicDoc);
+                    System.out.println("data after rabbit");
+                    searchRepository.save(topicDoc);
 
                 }
 
-
-
-            }
-
-        }
-        return ques;
+//                else{
+//                    System.out.println("print false here");
+//                    Question questionNew=new Question();
+//                    questionNew.setQuestion(questionDTO.getQuestion());
+//                    questionNew.setDescription(questionDTO.getDescription());
+//                    questionNew.setUpvotes(questionDTO.getUpvotes());
+//                    questionNew.setTimestamp(questionDTO.getTimestamp());
+//                    questionNew.setDownvote(questionDTO.getDownvotes());
+//
+//
+//
+//                    List<Comment> commentListElsePart = questionDTO.getComment();
+//                    List<Comments> commentsListElsePart = new ArrayList<>();
+//
+//
+//
+//                    for (Comment comment : commentListElsePart){
+//                        List<Replies> replies = new ArrayList<>();
+//                        for (com.stackroute.model.Replies reply: comment.getReplies()) {
+//                            User userElsePart = new User(reply.getUser().getEmailaddress(),reply.getUser().getFirstname(),reply.getUser().getImageurl());
+//                            Replies replies1 = new Replies(reply.getReply(),(int)reply.getLikes(),reply.getTimestamp(),userElsePart);
+//                            replies.add(replies1);
+//                        }
+//                        User userElsePart = new User(questionDTO.getUser().getEmailaddress(),questionDTO.getUser().getFirstname(),questionDTO.getUser().getImageurl());
+//
+//                        Comments comments = new Comments(comment.getComment(),comment.getTimestamp(),(int)comment.getLikes(),replies,userElsePart);
+//                        commentsListElsePart.add(comments);
+//                    }
+//
+//                    questionNew.setComments(commentsList);
+//
+//
+//                    List<Answer> answerListElsePart = new ArrayList<>();
+//                    for (com.stackroute.model.Answer answer:questionDTO.getAnswer()) {
+//                        List<Comments> answerCommentsList = new ArrayList<>();
+//                        for (Comment comment : commentList){
+//                            List<Replies> replies = new ArrayList<>();
+//                            for (com.stackroute.model.Replies reply: comment.getReplies()) {
+//                                User userElsePart = new User(reply.getUser().getEmailaddress(),reply.getUser().getFirstname(),reply.getUser().getImageurl());
+//                                Replies replies1 = new Replies(reply.getReply(),(int)reply.getLikes(),reply.getTimestamp(),userElsePart);
+//                                replies.add(replies1);
+//                            }
+//
+//
+//                            User userElsePart = new User(questionDTO.getUser().getEmailaddress(),questionDTO.getUser().getFirstname(),questionDTO.getUser().getImageurl());
+//
+//
+//                            Comments comments = new Comments(comment.getComment(),comment.getTimestamp(),(int)comment.getLikes(),replies,userElsePart);
+//                            answerCommentsList.add(comments);
+//                        }
+//
+//                        User userAnswer  = new User(answer.getUser().getEmailaddress(),answer.getUser().getFirstname(),answer.getUser().getImageurl());
+//                        Answer answerDomain = new Answer(answer.getAnswer(),answer.isAccepted(),answerCommentsList,answer.getUpvotes(),answer.getViews(),answer.getTimestamp(),userAnswer);
+//                        answerListElsePart.add(answerDomain);
+//                    }
+//                    questionNew.setAnswers(answerList);
+//                    User userElsePart = new User(questionDTO.getUser().getEmailaddress(),questionDTO.getUser().getFirstname(),questionDTO.getUser().getImageurl());
+//                    questionNew.setUser(userElsePart);
+//
+//
+//
+//
+//                 topicDoc.getQuestions().add(questionNew);
+//                 System.out.println("some results"+topicDoc);
+//                 searchRepository.save(topicDoc);
+//
+//                }
+            });
+        });
+        return null;
     }
-
 }

@@ -16,8 +16,8 @@ import java.util.List;
         private int upvotes;
         private int views;
         private long timestamp;
-        User user;
-        List<Comment> comments;
+        private User user;
+        private List<Comment> comments;
 
     }
 

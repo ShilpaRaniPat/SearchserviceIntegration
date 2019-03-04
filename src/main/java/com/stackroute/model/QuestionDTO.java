@@ -22,7 +22,7 @@ public class QuestionDTO {
     private int upvotes;
     private long timestamp;
     private int downvotes;
-    User user;
-    List<Comment> comment;
-    List<Answer> answer;
+    private User user;
+    private List<Comment> comment;
+    private List<Answer> answer;
 }

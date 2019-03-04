@@ -67,7 +67,6 @@ public class SearchController {
     public String function(@RequestBody QuestionDTO questionDTO){
         List<String> topics=questionDTO.getTopics();
         List<Question> list=searchService.questionOfPost(questionDTO);
-        //List<Question> list=searchService.questionOfPost(questionDTO);
         return "published successfully";
     }
 
